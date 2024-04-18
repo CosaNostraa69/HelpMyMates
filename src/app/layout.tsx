@@ -1,7 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Help my Mates",
