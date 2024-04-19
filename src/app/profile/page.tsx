@@ -1,4 +1,4 @@
-export default function Dashboard() {
+export default function Profile() {
   return (
     <div className="container">
       <div className="card start-hero">

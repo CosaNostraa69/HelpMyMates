@@ -3,7 +3,8 @@
 import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import Link from 'next/link';
 import styles from './Navbar.module.css';
-import { Button } from "./components/button-toogle";
+import { Button } from "./components/ButtonToogle";
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boolean, user: any }) {
   return (
@@ -26,22 +27,33 @@ export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boo
             </RegisterLink>
           </>
         ) : (
-          <div className={styles.profileBlob}>
-            {user?.picture ? (
-              <img className={styles.avatar} src={user.picture} alt="User Avatar" referrerPolicy="no-referrer" />
-            ) : (
-              <div className={styles.avatar}>
-                {user?.given_name?.[0]}
-                {user?.family_name?.[0]}
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <div className={styles.profileBlob}>
+                {user?.picture ? (
+                  <img className={styles.avatar} src={user.picture} alt="User Avatar" referrerPolicy="no-referrer" />
+                ) : (
+                  <div className={styles.avatar}>
+                    {user?.given_name?.[0]}
+                    {user?.family_name?.[0]}
+                  </div>
+                )}
               </div>
-            )}
-            <div>
-              <p className={styles.textHeading2}>
-                {user?.given_name} {user?.family_name}
-              </p>
-              <LogoutLink className={styles.textSubtle}>Log out</LogoutLink>
-            </div>
-          </div>
+            </DropdownMenu.Trigger>
+
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content className={styles.dropdownContent} sideOffset={5}>
+                <DropdownMenu.Item className={styles.dropdownItem}>
+                  <p className={styles.textHeading2}>
+                    {user?.given_name} {user?.family_name}
+                  </p>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className={styles.dropdownItem}>
+                  <LogoutLink className={styles.textSubtle}>Log out</LogoutLink>
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
         )}
         <Button />
       </div>

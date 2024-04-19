@@ -2,6 +2,11 @@
 .footer {
   background-color: #f8f9fa;
   padding: 2rem 0;
+  transition: background-color 0.3s;
+}
+
+.dark .footer {
+  background-color: #1f1f1f;
 }
 
 .container {
@@ -25,63 +30,43 @@
   margin-bottom: 1rem;
 }
 
-.links {
+
+.socialIcons {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
-}
-
-.link {
-  color: #333;
-  text-decoration: none;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-.social {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.socialIcon {
-  color: #333;
-  font-size: 1.25rem;
 }
 
 .socialIcon:hover {
   color: #007bff;
 }
-
-.newsletter {
+.links {
   display: flex;
   gap: 1rem;
-  align-items: center;
   margin-bottom: 1rem;
 }
-
-.newsletterInput {
-  padding: 0.5rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-}
-
-.newsletterButton {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.newsletterButton:hover {
-  background-color: #0056b3;
-}
-
-.copyright {
-  font-size: 0.875rem;
-  color: #6c757d;
-}
+  .newsletter {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .newsletterInput {
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .newsletterButton {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .newsletterButton:hover {
+    background-color: #0056b3;
+  }

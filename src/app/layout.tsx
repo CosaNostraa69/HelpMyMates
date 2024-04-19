@@ -1,5 +1,6 @@
+// layout.tsx
 import "./globals.css";
-import Navbar from "./Navbar";
+import NavbarWrapper from "./components/NavbarWrapper";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "next-themes";
 
@@ -17,8 +18,10 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider attribute="class">
-          <Navbar isAuthenticated={false} user={undefined} />
-          <main>{children}</main>
+          <NavbarWrapper />
+          <div>
+            <main>{children}</main>
+          </div>
           <Footer />
         </ThemeProvider>
       </body>
