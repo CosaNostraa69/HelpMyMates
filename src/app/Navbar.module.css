@@ -1,4 +1,5 @@
-/* Navbar.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -90,6 +91,7 @@
   color: #fff;
 }
 
+
 .dropdownContent {
   min-width: 220px;
   background-color: white;
@@ -99,32 +101,71 @@
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .dropdownItem {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
   color: var(--violet11);
   border-radius: 3px;
   display: flex;
   align-items: center;
-  height: 25px;
+  height: 40px;
   padding: 5px;
   position: relative;
   padding-left: 25px;
   user-select: none;
   outline: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dropdownItem:hover {
   background-color: var(--violet3);
 }
 
+.separator {
+  height: 1px;
+  background-color: var(--violet6);
+  margin: 5px;
+}
+
 .textHeading2 {
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 600;
   color: #333;
   transition: color 0.3s;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.dark .textHeading2 {
+  color: #fff;
+}
+
+.profileLink,
+.logoutLink {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dark .profileLink,
+.dark .logoutLink {
+  color: #fff;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.logoutIcon {
+  color: #ff4d4f;
 }
 
 .dark .textHeading2 {
