@@ -1,7 +1,7 @@
 import "./globals.css";
-import Link from "next/link";
 import Navbar from "./Navbar";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "next-themes";
 
 export const metadata = {
   title: "Help my Mates",
@@ -16,9 +16,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <ThemeProvider attribute="class">
+          <Navbar isAuthenticated={false} user={undefined} />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

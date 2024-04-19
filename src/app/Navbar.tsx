@@ -1,23 +1,22 @@
+// Navbar.tsx
+"use client";
 import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from 'next/link';
 import styles from './Navbar.module.css';
+import { Button } from "./components/button-toogle";
 
-export default async function Navbar() {
-  const { isAuthenticated, getUser } = getKindeServerSession();
-  const user = await getUser();
-
+export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boolean, user: any }) {
   return (
     <nav className={styles.container}>
       <Link href="/" className={styles.logo}>
         HelpMyMates
       </Link>
       <div className={styles.navLinks}>
-      <Link href="/" className={styles.navLink}>Home</Link>
+        <Link href="/" className={styles.navLink}>Home</Link>
         <Link href="/games" className={styles.navLink}>Games</Link>
         <Link href="/topics" className={styles.navLink}>Topics</Link>
         <Link href="/about" className={styles.navLink}>About</Link>
-        {!(await isAuthenticated()) ? (
+        {!isAuthenticated ? (
           <>
             <LoginLink className={styles.navLink} postLoginRedirectURL="/">
               Sign in
@@ -44,6 +43,7 @@ export default async function Navbar() {
             </div>
           </div>
         )}
+        <Button />
       </div>
     </nav>
   );
