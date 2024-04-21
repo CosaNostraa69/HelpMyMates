@@ -1,4 +1,3 @@
-// Navbar.tsx
 "use client";
 import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import Link from 'next/link';
@@ -28,42 +27,42 @@ export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boo
           </>
         ) : (
           <DropdownMenu.Root>
-  <DropdownMenu.Trigger asChild>
-    <div className={styles.profileBlob}>
-      {user?.picture ? (
-        <img className={styles.avatar} src={user.picture} alt="User Avatar" referrerPolicy="no-referrer" />
-      ) : (
-        <div className={styles.avatar}>
-          {user?.given_name?.[0]}
-          {user?.family_name?.[0]}
-        </div>
-      )}
-    </div>
-  </DropdownMenu.Trigger>
+            <DropdownMenu.Trigger asChild>
+              <div className={styles.profileBlob}>
+                {user?.picture ? (
+                  <img className={styles.avatar} src={user.picture} alt="User Avatar" referrerPolicy="no-referrer" />
+                ) : (
+                  <div className={styles.avatar}>
+                    {user?.given_name?.[0]}
+                    {user?.family_name?.[0]}
+                  </div>
+                )}
+              </div>
+            </DropdownMenu.Trigger>
 
-  <DropdownMenu.Portal>
-    <DropdownMenu.Content className={styles.dropdownContent} sideOffset={5}>
-      <DropdownMenu.Item className={styles.dropdownItem}>
-        <p className={styles.textHeading2}>
-          {user?.given_name} {user?.family_name}
-        </p>
-      </DropdownMenu.Item>
-      <DropdownMenu.Separator className={styles.separator} />
-      <DropdownMenu.Item className={styles.dropdownItem}>
-        <Link href="/profile" className={styles.profileLink}>
-          <i className={`${styles.icon} fas fa-user`}></i>
-          My Profile
-        </Link>
-      </DropdownMenu.Item>
-      <DropdownMenu.Item className={styles.dropdownItem}>
-        <LogoutLink className={styles.logoutLink}>
-          <i className={`${styles.icon} ${styles.logoutIcon} fas fa-sign-out-alt`}></i>
-          Log out
-        </LogoutLink>
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
-  </DropdownMenu.Portal>
-</DropdownMenu.Root>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content className={styles.dropdownContent} sideOffset={5}>
+                <DropdownMenu.Item className={styles.dropdownItem}>
+                  <p className={styles.textHeading2}>
+                    {user?.given_name} {user?.family_name}
+                  </p>
+                </DropdownMenu.Item>
+                <DropdownMenu.Separator className={styles.separator} />
+                <DropdownMenu.Item className={styles.dropdownItem}>
+                  <Link href="/profile" className={styles.profileLink}>
+                    <i className={`${styles.icon} fas fa-user`}></i>
+                    My Profile
+                  </Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className={styles.dropdownItem}>
+                  <LogoutLink className={styles.logoutLink}>
+                    <i className={`${styles.icon} ${styles.logoutIcon} fas fa-sign-out-alt`}></i>
+                    Log out
+                  </LogoutLink>
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
         )}
         <Button />
       </div>

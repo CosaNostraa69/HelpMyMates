@@ -1,0 +1,75 @@
+// fichier prisma/schema.prisma
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  name       String?
+  pictureUrl String?
+  topics     Topic[]
+  messages   Message[]
+  games      UserGame[]
+  comments   Comment[]
+}
+
+model Topic {
+  id       Int         @id @default(autoincrement())
+  title    String
+  content  String
+  userId   Int
+  user     User        @relation(fields: [userId], references: [id])
+  messages Message[]
+  games    TopicGame[]
+  comments Comment[]
+}
+
+model Message {
+  id      Int    @id @default(autoincrement())
+  content String
+  userId  Int
+  user    User   @relation(fields: [userId], references: [id])
+  topicId Int
+  topic   Topic  @relation(fields: [topicId], references: [id])
+}
+
+model Comment {
+  id      Int    @id @default(autoincrement())
+  content String
+  userId  Int
+  user    User   @relation(fields: [userId], references: [id])
+  topicId Int
+  topic   Topic  @relation(fields: [topicId], references: [id])
+}
+
+model Game {
+  id     Int         @id @default(autoincrement())
+  name   String
+  topics TopicGame[]
+  users  UserGame[]
+}
+
+model UserGame {
+  userId      Int
+  gameId      Int
+  user        User      @relation(fields: [userId], references: [id])
+  game        Game      @relation(fields: [gameId], references: [id])
+  favorite    Boolean   // Indique si le jeu est favori pour l'utilisateur
+  @@id([userId, gameId])
+}
+
+model TopicGame {
+  topicId     Int
+  gameId      Int
+  topic       Topic     @relation(fields: [topicId], references: [id])
+  game        Game      @relation(fields: [gameId], references: [id])
+  @@id([topicId, gameId])
+}
+
