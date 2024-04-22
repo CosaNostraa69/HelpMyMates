@@ -1,0 +1,14 @@
+.medallion {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Crée un cercle parfait */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .error {
+    color: red;
+  }
+  

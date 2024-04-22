@@ -29,8 +29,8 @@ export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boo
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
               <div className={styles.profileBlob}>
-                {user?.picture ? (
-                  <img className={styles.avatar} src={user.picture} alt="User Avatar" referrerPolicy="no-referrer" />
+                {user?.pictureUrl ? (
+                  <img className={styles.avatar} src={user.pictureUrl} alt="User Avatar" referrerPolicy="no-referrer" />
                 ) : (
                   <div className={styles.avatar}>
                     {user?.given_name?.[0]}
