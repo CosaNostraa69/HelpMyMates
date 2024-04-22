@@ -10,10 +10,11 @@ generator client {
 }
 
 model User {
-  id         Int        @id @default(autoincrement())
-  email      String     @unique
-  name       String?
-  pictureUrl String?
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  given_name String?
+  family_name String?
+  picture    String?
   topics     Topic[]
   messages   Message[]
   games      UserGame[]

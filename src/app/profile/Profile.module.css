@@ -1,14 +1,95 @@
-.medallion {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Crée un cercle parfait */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .error {
-    color: red;
-  }
-  
+/* app/profile/Profile.module.css */
+.profileContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.heading {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.profileCard {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.profileImageContainer {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+.profileImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.uploadSection {
+  text-align: center;
+}
+
+.customFileUpload {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.customFileUpload:hover {
+  background-color: #0056b3;
+}
+
+.uploadingText {
+  margin-top: 0.5rem;
+  color: #777;
+}
+
+.error {
+  margin-top: 0.5rem;
+  color: #f44336;
+}
+
+.profileInfo {
+  flex: 2;
+  padding: 2rem;
+}
+
+.name {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.email {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.additionalInfo {
+  margin-top: 1rem;
+}
+
+.additionalInfo p {
+  margin-bottom: 0.5rem;
+}

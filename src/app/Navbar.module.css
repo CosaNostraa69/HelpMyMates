@@ -5,8 +5,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #f8f9fa;
-  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+  
 }
 
 .dark .container {
@@ -32,7 +32,7 @@
 }
 
 .navLink {
-  color: #333;
+  color: #111111;
   text-decoration: none;
   padding: 0.5rem;
   border-radius: 4px;
@@ -52,7 +52,7 @@
 }
 
 .signUpBtn {
-  background-color: #007bff;
+  background-color: #566474;
   color: #fff;
   transition: background-color 0.3s;
 }
