@@ -3,26 +3,30 @@ import Link from 'next/link';
 import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import styles from './Navbar.module.css';
+import { useState } from 'react';
 import { Button } from './components/ButtonToogle';
 
 export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boolean, user: any }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);  // État pour gérer l'affichage du menu mobile
+
   return (
     <nav className={styles.container}>
-      <div className={styles.leftSection}>  {/* Contient logo et liens de navigation */}
+      <div className={styles.leftSection}>  
         <div className={styles.logoSection}>
           <Link href="/" className={styles.logo}>
             HelpMyMates
           </Link>
           <div className={styles.verticalLine}></div>
         </div>
-        <div className={styles.navLinks}>
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={styles.menuToggle}>☰</button>
+        <div className={`${styles.navLinks} ${isMenuOpen ? styles.showMenu : ''}`}>
           <Link href="/" className={styles.navLink}>Home</Link>
           <Link href="/games" className={styles.navLink}>Games</Link>
           <Link href="/topics" className={styles.navLink}>Topics</Link>
           <Link href="/about" className={styles.navLink}>About</Link>
         </div>
       </div>
-      <div className={styles.rightSection}>  {/* Contient liens d'authentification */}
+      <div className={styles.rightSection}>
         {!isAuthenticated ? (
           <>
             <LoginLink className={styles.navLink} postLoginRedirectURL="/">
@@ -54,13 +58,11 @@ export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boo
                 <DropdownMenu.Separator className={styles.separator} />
                 <DropdownMenu.Item className={styles.dropdownItem}>
                   <Link href="/profile" className={styles.profileLink}>
-                    <i className={`${styles.icon} fas fa-user`}></i>
                     My Profile
                   </Link>
                 </DropdownMenu.Item>
                 <DropdownMenu.Item className={styles.dropdownItem}>
                   <LogoutLink className={styles.logoutLink}>
-                    <i className={`${styles.icon} ${styles.logoutIcon} fas fa-sign-out-alt`}></i>
                     Log out
                   </LogoutLink>
                 </DropdownMenu.Item>
@@ -68,7 +70,7 @@ export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boo
             </DropdownMenu.Portal>
           </DropdownMenu.Root>
         )}
-        <Button />
+        < Button />
       </div>
     </nav>
   );

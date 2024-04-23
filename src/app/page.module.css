@@ -8,6 +8,23 @@
   padding: 40px 0;
 }
 
+.buttonFirst{
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #c9cccf;
+  color: #fff;
+  border-radius: 4px;
+
+}
+
+.buttonFirst:hover{
+  background-color: #0056b3;
+  color:#fff;
+
+}
+
 
 
 .heroTitle {
@@ -31,11 +48,11 @@
 }
 .hero {
   display: flex;
-  flex-direction: row; /* Garantit que le texte est à gauche et l'image à droite */
-  align-items: center; /* Alignement vertical au centre */
-  justify-content: flex-start; /* Contenu aligné à gauche */
-  gap: 20px; /* Espace entre le contenu et l'image */
-  margin-bottom: 60px; /* Espace en dessous de la section */
+  flex-direction: row; 
+  align-items: center;
+  justify-content: flex-start; 
+  gap: 20px; 
+  margin-bottom: 60px; 
 }
 
 .heroContent {

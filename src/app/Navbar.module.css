@@ -1,11 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 
-
-.contentWrapper{
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
 .container {
   display: flex;
   justify-content: space-between;
@@ -14,7 +8,18 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
 }
 
-.leftSection, .rightSection {
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.rightSection {
+  gap: 10px;
+}
+
+.leftSection,
+.rightSection {
   display: flex;
   align-items: center;
 }
@@ -22,6 +27,7 @@
 .logoSection {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .verticalLine {
@@ -35,35 +41,16 @@
   background-color: #555;
 }
 
-/* Ensure that the right section aligns items to the right */
-.rightSection {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.menuToggle span {
+  font-size: 24px;
+  display: block;
 }
-
-/* Additional styles for dark mode and responsive behavior */
-.dark .container {
-  background-color: #1f1f1f;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.dark .logo {
-  color: #fff;
-}
-
 
 .navLinks {
   display: flex;
   gap: 1rem;
   align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .dark .navLinks {
@@ -107,116 +94,107 @@
 .dark .signUpBtn:hover {
   background-color: #004085;
 }
-
-.profileBlob {
+.menuToggle {
+  display: none; /* Initially hidden */
+  background: none;
+  border: none;
   cursor: pointer;
+  font-size: 24px;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #ced4da;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #333;
-  transition: background-color 0.3s, color 0.3s;
+@media (max-width: 768px) {
+  .menuToggle {
+    display: block; /* Show menu toggle on mobile */
+  }
+
+  .navLinks {
+    display: none; /* Initially hide links on mobile */
+  }
+
+  .showMenu {
+    display: flex; /* Show links when menu is toggled */
+    flex-direction: column;
+  }
 }
 
-.dark .avatar {
-  background-color: #444444;
-  color: #fff;
+/* Make sure the vertical line is visible */
+.verticalLine {
+  height: 50px;
+  width: 2px;
+  background-color: #ddd;
+  margin: 0 20px;
 }
 
+.dark .verticalLine {
+  background-color: #555;
+}
 
+/* Styles pour le contenu du dropdown */
 .dropdownContent {
-  min-width: 220px;
-  background-color: white;
-  border-radius: 6px;
-  padding: 5px;
-  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2);
-  animation-duration: 400ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
-  font-family: 'Montserrat', sans-serif;
+  min-width: 220px; /* Largeur minimale du menu */
+  background-color: white; /* Fond du menu */
+  border-radius: 8px; /* Bordures arrondies pour le menu */
+  padding: 10px 0; /* Espacement vertical à l'intérieur du menu */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Ombre portée pour le menu */
+  animation: fadeIn 200ms ease-out; /* Animation d'apparition douce */
+  font-family: "Montserrat", sans-serif; /* Police de caractère du menu */
+  z-index: 1000; /* Assure que le dropdown passe au-dessus des autres éléments */
 }
 
+/* Styles pour les items du dropdown */
 .dropdownItem {
-  font-size: 14px;
-  line-height: 1;
-  color: var(--violet11);
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  height: 40px;
-  padding: 5px;
-  position: relative;
-  padding-left: 25px;
-  user-select: none;
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
+  font-size: 16px; /* Taille de la police pour les items */
+  color: #333; /* Couleur du texte des items */
+  padding: 8px 20px; /* Espacement interne pour chaque item */
+  display: block; /* Les items prennent toute la largeur disponible */
+  transition: background-color 0.3s, color 0.3s; /* Transition pour hover */
+  cursor: pointer; /* Indique que l'item est cliquable */
 }
 
 .dropdownItem:hover {
-  background-color: var(--violet3);
+  background-color: #f5f5f5; /* Couleur de fond au survol de l'item */
 }
 
+/* Séparateur pour structurer visuellement les items du dropdown */
 .separator {
-  height: 1px;
-  background-color: var(--violet6);
-  margin: 5px;
+  height: 1px; /* Hauteur du séparateur */
+  background-color: #eee; /* Couleur du séparateur */
+  margin: 5px 10px; /* Marges horizontales pour le séparateur */
 }
 
-.textHeading2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
-  transition: color 0.3s;
-  margin: 0;
-  padding: 10px 0;
-}
-
-.dark .textHeading2 {
-  color: #fff;
-}
-
+/* Styles pour les liens dans les items du dropdown */
 .profileLink,
 .logoutLink {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s;
+  color: #333; /* Couleur des liens dans les items */
+  text-decoration: none; /* Pas de soulignement pour les liens */
+}
+
+.profileLink:hover,
+.logoutLink:hover {
+  text-decoration: underline; /* Soulignement au survol pour indiquer l'interactivité */
+}
+.profileBlob {
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.dark .profileLink,
-.dark .logoutLink {
-  color: #fff;
-}
-
-.icon {
-  margin-right: 10px;
-  font-size: 1.1rem;
-}
-
-.logoutIcon {
-  color: #ff4d4f;
-}
-
-.dark .textHeading2 {
-  color: #fff;
-}
-
-.textSubtle {
-  color: #6c757d;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.dark .textSubtle {
-  color: #a0a0a0;
+/* Animation pour l'apparition du dropdown */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

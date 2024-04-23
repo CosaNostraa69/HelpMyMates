@@ -15,7 +15,7 @@ export default function HomePage() {
               HelpMyMates is your go-to platform to connect with friends, share experiences, and support each other through life challenges.
             </p>
             <div className={styles.heroActions}>
-              <Link href="/topics" className={styles.btnPrimary}>Discover Our Topics</Link>
+              <Link href="/topics" className={styles.buttonFirst}>Discover Our Topics</Link>
             </div>
           </div>
           <div className={styles.heroImage}>
