@@ -1,21 +1,28 @@
 "use client";
-import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import Link from 'next/link';
-import styles from './Navbar.module.css';
-import { Button } from "./components/ButtonToogle";
+import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import styles from './Navbar.module.css';
+import { Button } from './components/ButtonToogle';
 
 export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boolean, user: any }) {
   return (
     <nav className={styles.container}>
-      <Link href="/" className={styles.logo}>
-        HelpMyMates
-      </Link>
-      <div className={styles.navLinks}>
-        <Link href="/" className={styles.navLink}>Home</Link>
-        <Link href="/games" className={styles.navLink}>Games</Link>
-        <Link href="/topics" className={styles.navLink}>Topics</Link>
-        <Link href="/about" className={styles.navLink}>About</Link>
+      <div className={styles.leftSection}>  {/* Contient logo et liens de navigation */}
+        <div className={styles.logoSection}>
+          <Link href="/" className={styles.logo}>
+            HelpMyMates
+          </Link>
+          <div className={styles.verticalLine}></div>
+        </div>
+        <div className={styles.navLinks}>
+          <Link href="/" className={styles.navLink}>Home</Link>
+          <Link href="/games" className={styles.navLink}>Games</Link>
+          <Link href="/topics" className={styles.navLink}>Topics</Link>
+          <Link href="/about" className={styles.navLink}>About</Link>
+        </div>
+      </div>
+      <div className={styles.rightSection}>  {/* Contient liens d'authentification */}
         {!isAuthenticated ? (
           <>
             <LoginLink className={styles.navLink} postLoginRedirectURL="/">
@@ -39,13 +46,10 @@ export default function Navbar({ isAuthenticated, user }: { isAuthenticated: boo
                 )}
               </div>
             </DropdownMenu.Trigger>
-
             <DropdownMenu.Portal>
               <DropdownMenu.Content className={styles.dropdownContent} sideOffset={5}>
                 <DropdownMenu.Item className={styles.dropdownItem}>
-                  <p className={styles.textHeading2}>
-                    {user?.given_name} {user?.family_name}
-                  </p>
+                  {user?.given_name} {user?.family_name}
                 </DropdownMenu.Item>
                 <DropdownMenu.Separator className={styles.separator} />
                 <DropdownMenu.Item className={styles.dropdownItem}>

@@ -15,12 +15,11 @@ export default function HomePage() {
               HelpMyMates is your go-to platform to connect with friends, share experiences, and support each other through life challenges.
             </p>
             <div className={styles.heroActions}>
-              <Link href="/signup" className={styles.btnPrimary}>Sign Up</Link>
-              <Link href="/login" className={styles.btnSecondary}>Log In</Link>
+              <Link href="/topics" className={styles.btnPrimary}>Discover Our Topics</Link>
             </div>
           </div>
           <div className={styles.heroImage}>
-            <img src="/images/hero-illustration.svg" alt="HelpMyMates Illustration" />
+            <img src="/images/hero-illustration.jpg" alt="HelpMyMates Illustration" />
           </div>
         </section>
 
@@ -28,21 +27,21 @@ export default function HomePage() {
           <h2 className={styles.sectionTitle}>Key Features</h2>
           <div className={styles.featureGrid}>
             <div className={styles.featureItem}>
-              <img src="/images/chat-icon.svg" alt="Chat Icon" className={styles.featureIcon} />
+              <img src="https://img.icons8.com/cotton/64/000000/chat.png" alt="Chat Icon" className={styles.featureIcon} />
               <h3 className={styles.featureTitle}>Instant Messaging</h3>
               <p className={styles.featureDescription}>
                 Stay connected with your mates through real-time messaging and group chats.
               </p>
             </div>
             <div className={styles.featureItem}>
-              <img src="/images/support-icon.svg" alt="Support Icon" className={styles.featureIcon} />
+              <img src="https://img.icons8.com/arcade/64/000000/customer-support.png" alt="Support Icon" className={styles.featureIcon} />
               <h3 className={styles.featureTitle}>Vent and Support</h3>
               <p className={styles.featureDescription}>
                 Share your thoughts, feelings, and experiences in a safe and supportive environment.
               </p>
             </div>
             <div className={styles.featureItem}>
-              <img src="/images/resources-icon.svg" alt="Resources Icon" className={styles.featureIcon} />
+              <img src="https://img.icons8.com/color/48/000000/resources.png" alt="Resources Icon" className={styles.featureIcon} />
               <h3 className={styles.featureTitle}>Helpful Resources</h3>
               <p className={styles.featureDescription}>
                 Access a curated collection of articles, tips, and resources to support your well-being.
@@ -60,7 +59,7 @@ export default function HomePage() {
         </section>
       </main>
 
-   
+
     </div>
   );
 }

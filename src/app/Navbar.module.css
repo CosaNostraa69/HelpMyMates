@@ -1,14 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
+
+.contentWrapper{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
-  
 }
 
+.leftSection, .rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+}
+
+.verticalLine {
+  height: 50px;
+  width: 2px;
+  background-color: #ddd;
+  margin: 0 20px;
+}
+
+.dark .verticalLine {
+  background-color: #555;
+}
+
+/* Ensure that the right section aligns items to the right */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Additional styles for dark mode and responsive behavior */
 .dark .container {
   background-color: #1f1f1f;
 }
@@ -25,10 +59,15 @@
   color: #fff;
 }
 
+
 .navLinks {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.dark .navLinks {
+  color: #fff;
 }
 
 .navLink {
