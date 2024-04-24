@@ -10,8 +10,8 @@ generator client {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
   given_name String?
   family_name String?
   picture    String?
@@ -22,32 +22,39 @@ model User {
 }
 
 model Topic {
-  id       Int         @id @default(autoincrement())
-  title    String
-  content  String
-  userId   Int
-  user     User        @relation(fields: [userId], references: [id])
-  messages Message[]
-  games    TopicGame[]
-  comments Comment[]
+  id         Int         @id @default(autoincrement())
+  title      String
+  content    String
+  userId     Int
+  user       User        @relation(fields: [userId], references: [id])
+  messages   Message[]
+  games      TopicGame[]
+  comments   Comment[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
 }
 
+
 model Message {
-  id      Int    @id @default(autoincrement())
-  content String
-  userId  Int
-  user    User   @relation(fields: [userId], references: [id])
-  topicId Int
-  topic   Topic  @relation(fields: [topicId], references: [id])
+  id        Int       @id @default(autoincrement())
+  content   String
+  userId    Int
+  user      User      @relation(fields: [userId], references: [id])
+  topicId   Int
+  topic     Topic     @relation(fields: [topicId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Comment {
-  id      Int    @id @default(autoincrement())
-  content String
-  userId  Int
-  user    User   @relation(fields: [userId], references: [id])
-  topicId Int
-  topic   Topic  @relation(fields: [topicId], references: [id])
+  id        Int       @id @default(autoincrement())
+  content   String
+  userId    Int
+  user      User      @relation(fields: [userId], references: [id])
+  topicId   Int
+  topic     Topic     @relation(fields: [topicId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Game {
@@ -58,19 +65,18 @@ model Game {
 }
 
 model UserGame {
-  userId      Int
-  gameId      Int
-  user        User      @relation(fields: [userId], references: [id])
-  game        Game      @relation(fields: [gameId], references: [id])
-  favorite    Boolean   // Indique si le jeu est favori pour l'utilisateur
+  userId    Int
+  gameId    Int
+  user      User      @relation(fields: [userId], references: [id])
+  game      Game      @relation(fields: [gameId], references: [id])
+  favorite  Boolean   // Indique si le jeu est favori pour l'utilisateur
   @@id([userId, gameId])
 }
 
 model TopicGame {
-  topicId     Int
-  gameId      Int
-  topic       Topic     @relation(fields: [topicId], references: [id])
-  game        Game      @relation(fields: [gameId], references: [id])
+  topicId   Int
+  gameId    Int
+  topic     Topic     @relation(fields: [topicId], references: [id])
+  game      Game      @relation(fields: [gameId], references: [id])
   @@id([topicId, gameId])
 }
-
