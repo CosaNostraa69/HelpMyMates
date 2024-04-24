@@ -1,18 +1,29 @@
-// app/api/topics/index.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../../lib/prisma';
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '../../../lib/prisma';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'GET') {
-    try {
-      const topics = await prisma.topic.findMany();
-      res.status(200).json(topics);
-    } catch (error) {
-      console.error("Error fetching topics:", error);
-      res.status(500).json({ error: "Failed to fetch topics" });
-    }
-  } else {
-    res.setHeader('Allow', ['GET']);
-    res.status(405).end('Method Not Allowed');
+export async function GET(request: NextRequest) {
+  try {
+    const topics = await prisma.topic.findMany();
+    return NextResponse.json(topics);
+  } catch (error) {
+    console.error("Error fetching topics:", error);
+    return NextResponse.json({ error: "Failed to fetch topics" }, { status: 500 });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  const { title, content, userId } = await request.json();
+  try {
+    const newTopic = await prisma.topic.create({
+      data: {
+        title,
+        content,
+        user: { connect: { id: userId } },
+      },
+    });
+    return NextResponse.json(newTopic, { status: 201 });
+  } catch (error) {
+    console.error("Error creating topic:", error);
+    return NextResponse.json({ error: "Failed to create topic" }, { status: 500 });
   }
 }
